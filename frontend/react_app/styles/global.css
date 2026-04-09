@@ -1,0 +1,10 @@
+:root {
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 2rem;
+  background: #f5f8f2;
+  color: #1d3526;
+}
