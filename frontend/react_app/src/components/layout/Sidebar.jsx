@@ -2,7 +2,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import {
   LayoutDashboard, Map, Wheat, CloudSun, Bot, Settings,
   ChevronLeft, ChevronRight, Leaf, ClipboardList, Tractor, BarChart3,
-  Beaker
+  Beaker, ShieldAlert
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 
@@ -16,6 +16,7 @@ const navItems = [
   { to: '/forecast', label: 'Climate', icon: CloudSun },
   { to: '/maps', label: 'Geospatial', icon: Map },
   null, // divider
+  { to: '/risk', label: 'Risk & Insurance', icon: ShieldAlert },
   { to: '/reports', label: 'Reports', icon: BarChart3 },
   { to: '/assistant', label: 'AI Assistant', icon: Bot },
 ];

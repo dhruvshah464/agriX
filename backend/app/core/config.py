@@ -19,6 +19,7 @@ class Settings(BaseSettings):
 
     OPENWEATHER_API_KEY: str | None = None
     OPENAI_API_KEY: str | None = None
+    GROQ_API_KEY: str | None = None
     LLM_PROVIDER: str = "openai"
     LLM_MODEL: str = "gpt-4o-mini"
 

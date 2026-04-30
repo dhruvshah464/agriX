@@ -16,6 +16,7 @@ const MapInsightsPage = lazy(() => import('../pages/MapInsightsPage'));
 const ReportsPage = lazy(() => import('../pages/ReportsPage'));
 const AssistantPage = lazy(() => import('../pages/AssistantPage'));
 const SettingsPage = lazy(() => import('../pages/SettingsPage'));
+const RiskPage = lazy(() => import('../pages/RiskPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 
 function SuspenseWrapper({ children }) {
@@ -64,6 +65,7 @@ export const router = createBrowserRouter([
           { path: 'reports', element: <SuspenseWrapper><ReportsPage /></SuspenseWrapper> },
           { path: 'assistant', element: <SuspenseWrapper><AssistantPage /></SuspenseWrapper> },
           { path: 'settings', element: <SuspenseWrapper><SettingsPage /></SuspenseWrapper> },
+          { path: 'risk', element: <SuspenseWrapper><RiskPage /></SuspenseWrapper> },
           { path: '*', element: <SuspenseWrapper><NotFoundPage /></SuspenseWrapper> },
         ]
       }

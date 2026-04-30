@@ -8,7 +8,16 @@ export const AuthProvider = ({ children }) => {
   const [session, setSession] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Check for Dev Bypass
+  const isDevBypass = localStorage.getItem('agrix_dev_bypass') === 'true';
+
   useEffect(() => {
+    if (isDevBypass) {
+      setUser({ email: 'developer@agrix.dev', name: 'Dev User' });
+      setSession({ access_token: 'fake-dev-token' });
+      setLoading(false);
+      return;
+    }
     // Check active sessions and sets the user
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
@@ -29,7 +38,11 @@ export const AuthProvider = ({ children }) => {
   const value = {
     session,
     user,
-    signOut: () => supabase.auth.signOut(),
+    signOut: () => {
+      localStorage.removeItem('agrix_dev_bypass');
+      supabase.auth.signOut();
+      window.location.href = '/login';
+    },
   };
 
   return (

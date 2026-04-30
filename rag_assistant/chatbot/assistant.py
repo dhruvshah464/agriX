@@ -85,6 +85,24 @@ def ask_assistant(
             answer = completion.choices[0].message.content or "No response generated."
             return answer, docs
 
+    if provider.lower() == "groq" and api_key:
+        if OpenAI:
+            # Groq is fully compatible with the OpenAI API
+            client = OpenAI(
+                api_key=api_key,
+                base_url="https://api.groq.com/openai/v1"
+            )
+            completion = client.chat.completions.create(
+                model=model_name,
+                messages=[
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "user", "content": prompt},
+                ],
+                temperature=0.2,
+            )
+            answer = completion.choices[0].message.content or "No response generated."
+            return answer, docs
+
     answer = (
         "Based on retrieved agronomy guidance: optimize nutrient balance, align irrigation with forecasted rainfall, "
         "and investigate low-NDVI areas for stress and pest risk."
